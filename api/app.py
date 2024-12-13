@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import google.generativeai as genai
 
 # Configure the generative AI API key
@@ -7,6 +8,9 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Initialize the Flask app
 app = Flask(__name__)
+
+# Enable CORS for all routes
+CORS(app)
 
 @app.route('/generate-response', methods=['POST'])
 def generate_response():
